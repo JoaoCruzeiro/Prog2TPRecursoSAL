@@ -10,10 +10,20 @@ public class Utilizador implements Serializable{
     private String localidade;
     private String username;
     private String password;
+    private Perfil perfil;
 
-    public Utilizador() {
-
+    public Utilizador(String username, String password, Perfil perfil, String nome, int nCC, int nif, int telefone, String morada, String localidade) {
+        this.username = username;
+        this.password = password;
+        this.perfil = perfil;
+        this.nome = nome;
+        this.nCC = nCC;
+        this.nif = nif;
+        this.telefone = telefone;
+        this.morada = morada;
+        this.localidade = localidade;
     }
+
 
     public String getNome() {
         return nome;
@@ -61,7 +71,6 @@ public class Utilizador implements Serializable{
         this.morada = morada;
     }
 
-
     public String getLocalidade() {
         return localidade;
     }
@@ -86,8 +95,8 @@ public class Utilizador implements Serializable{
         this.password = password;
     }
 
-
-
-
-
+    //Nao precisa de setters porque noa vai ser alterado
+    public Perfil getPerfil() {
+        return perfil;
+    }
 }

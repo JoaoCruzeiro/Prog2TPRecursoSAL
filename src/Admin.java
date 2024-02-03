@@ -1,9 +1,8 @@
 import java.io.Serializable;
 
-public class Admin extends Utilizador implements Serializable {
-
+class Admin extends Utilizador {
     public Admin() {
-        super();
+        super("admin", "admin", Perfil.ADMIN, "TiagoJoao", 0, 0, 0, "Casa", "Viana");
     }
 }
 
