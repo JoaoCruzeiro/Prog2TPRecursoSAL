@@ -7,12 +7,14 @@ public class TanquesAguaSalgada {
     private boolean evaporado;
     private boolean cristalizado;
     private LocalDate ultimaEnchida;
+    private TiposDeSal tiposDeSal;
 
-    public TanquesAguaSalgada(int id) {
+    public TanquesAguaSalgada(int id, TiposDeSal tiposDeSal) {
         this.id = id;
         this.cheio = false;
         this.evaporado = false;
         this.cristalizado = false;
+        this.tiposDeSal = tiposDeSal;
         this.ultimaEnchida = LocalDate.now();
     }
 

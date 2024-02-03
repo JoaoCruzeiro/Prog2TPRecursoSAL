@@ -3,8 +3,9 @@ public class TiposDeSal {
     private String nomeTipo;
     private float precoKG;
 
-    public TiposDeSal(){
-
+    public TiposDeSal(String nomeTipo, float precoKG) {
+        this.nomeTipo = nomeTipo;
+        this.precoKG = precoKG;
     }
 
     public float getPrecoKG() {
@@ -22,5 +23,4 @@ public class TiposDeSal {
     public void setNomeTipo(String nomeTipo) {
         this.nomeTipo = nomeTipo;
     }
-
 }

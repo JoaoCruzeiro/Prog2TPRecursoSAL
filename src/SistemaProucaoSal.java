@@ -8,7 +8,24 @@ public class SistemaProucaoSal {
         GestorVendas gestorVendas = new GestorVendas("Antonio", "senhaVendas", "Gestor Vendas", 0, 0, 0, "N/A", "N/A");
 
         //Produtos (Tipos de Sal)
-        Produto sal = new Produto("Sal", 5.00f);
-        Produto florDeSal = new Produto("Flor de Sal", 8.00f);
+        TiposDeSal sal = new TiposDeSal("Sal", 5.0f);
+        TiposDeSal florDeSal = new TiposDeSal("Flor de Sal", 8.0f);
+
+        // Criar tanques
+        TanquesAguaSalgada tanque1 = new TanquesAguaSalgada(1, sal);
+        TanquesAguaSalgada tanque2 = new TanquesAguaSalgada(2, sal);
+        TanquesAguaSalgada tanque3 = new TanquesAguaSalgada(3, florDeSal);
+
+
+        // Associar tanques a um lote
+        LoteFabrico lote = new LoteFabrico();
+        lote.adicionarTanque(tanque1);
+        lote.adicionarTanque(tanque2);
+        lote.adicionarTanque(tanque3);
+
+        // Produzir lote
+        lote.encherAutomaticamente();
+        lote.recolherSal();
+        lote.recolherFlorDeSal();
     }
 }
