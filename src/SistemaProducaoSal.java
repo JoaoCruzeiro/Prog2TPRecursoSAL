@@ -1,4 +1,4 @@
-public class SistemaProucaoSal {
+public class SistemaProducaoSal {
     public static void main(String[] args) {
         // Criando instâncias com dados específicos
         Cliente cliente = new Cliente("cliente1", "senhaCliente","NomeCliente", 123456, 789012345, 987654321, "Rua Cliente, 123", "Cidade");

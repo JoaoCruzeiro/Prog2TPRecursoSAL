@@ -12,4 +12,3 @@ public class Produto {
         return tiposDeSal;
     }
 }
-

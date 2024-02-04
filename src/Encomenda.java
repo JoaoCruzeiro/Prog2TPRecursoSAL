@@ -15,6 +15,13 @@ public class Encomenda {
         produtosEncomendados.add(produto);
     }
 
+    //Comprar um lote de produtos
+    public void adicionarLote(LoteFabrico loteFabrico) {
+        for (Produto produto : loteFabrico.getProdutosProduzidos()) {
+            produtosEncomendados.add(produto);
+        }
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
