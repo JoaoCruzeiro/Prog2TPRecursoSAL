@@ -24,8 +24,6 @@ public class SistemaProucaoSal {
         lote.adicionarTanque(tanque3);
 
         // Produzir lote
-        lote.encherAutomaticamente();
         lote.recolherSal();
-        lote.recolherFlorDeSal();
     }
 }

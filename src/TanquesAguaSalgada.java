@@ -45,6 +45,9 @@ public class TanquesAguaSalgada {
     public void recolherCristalizacao() {
         this.cristalizado = true;
     }
+    public TiposDeSal getTiposDeSal() {
+        return tiposDeSal;
+    }
 
     public void encherAutomaticamente() {
         // Simular enchimento automático após as 10 da manhã e reset à meia-noite
