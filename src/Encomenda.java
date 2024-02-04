@@ -2,32 +2,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Encomenda {
-    private static int contadorEncomendas = 1; // Contador para gerar IDs únicos para cada encomenda
-    private int id;
+
     private Cliente cliente;
-    private List<ProdutoEncomendado> produtos;
+    private List<Produto> produtosEncomendados;
 
     public Encomenda(Cliente cliente) {
-        this.id = contadorEncomendas++;
         this.cliente = cliente;
-        this.produtos = new ArrayList<>();
+        this.produtosEncomendados = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
+    public void adicionarProduto(Produto produto) {
+        produtosEncomendados.add(produto);
     }
 
     public Cliente getCliente() {
         return cliente;
     }
 
-    public List<ProdutoEncomendado> getProdutos() {
-        return produtos;
+    public List<Produto> getProdutosEncomendados() {
+        return produtosEncomendados;
     }
 
-    public void adicionarProduto(Produto produto, int quantidade) {
-        produtos.add(new ProdutoEncomendado(produto, quantidade));
+    public double calcularTotal() {
+        double total = 0.0;
+        for (Produto produto : produtosEncomendados) {
+            total += produto.getTiposDeSal().getPrecoKG();
+        }
+        return total;
     }
-
-    // Outros métodos relacionados a Encomenda, se necessário
 }
