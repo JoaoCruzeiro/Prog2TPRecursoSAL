@@ -8,6 +8,26 @@ public class SistemaProducaoSal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        Cliente cliente = new Cliente("cliente1", "senhaCliente","NomeCliente", 123456, 789012345, 987654321, "Rua Cliente, 123", "Cidade");
+        GestorProducao gestorProducao = new GestorProducao("Maria", "senhaProducao", "Gestor Producao", 0, 0, 0, "N/A", "N/A");
+        GestorVendas gestorVendas = new GestorVendas("Antonio", "senhaVendas", "Gestor Vendas", 0, 0, 0, "N/A", "N/A");
+
+        //Produtos (Tipos de Sal)
+        TiposDeSal sal = new TiposDeSal("Sal", 5.0f);
+        TiposDeSal florDeSal = new TiposDeSal("Flor de Sal", 8.0f);
+
+        // Criar tanques
+        TanquesAguaSalgada tanque1 = new TanquesAguaSalgada(1, sal);
+        TanquesAguaSalgada tanque2 = new TanquesAguaSalgada(2, sal);
+        TanquesAguaSalgada tanque3 = new TanquesAguaSalgada(3, florDeSal);
+
+        // exemplo da criação de um lote pelo gestor
+        int quantidadeProdutos = 10;
+        LocalDate dataProducao = LocalDate.of(2024, 1, 1);
+        LoteFabrico loteFabrico = gestorProducao.criarLoteFabrico(tanque1, quantidadeProdutos, dataProducao);
+
+        gestaoUtilizadores.carregarUtilizadores();
+
         boolean registoNovoUtilizador = false;
         do {
             // Opção para login ou registo
@@ -29,6 +49,7 @@ public class SistemaProducaoSal {
                     break;
                 case 3:
                     System.out.println("A sair do sistema. Obrigado pela sua companhia!");
+                    gestaoUtilizadores.salvarObjetoSerializado(gestaoUtilizadores.getUtilizadores());
                     return;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -207,23 +228,4 @@ public class SistemaProducaoSal {
                 System.out.println("Opção inválida. Tente novamente.");
         }
     }
-
-    Cliente cliente = new Cliente("cliente1", "senhaCliente","NomeCliente", 123456, 789012345, 987654321, "Rua Cliente, 123", "Cidade");
-    GestorProducao gestorProducao = new GestorProducao("Maria", "senhaProducao", "Gestor Producao", 0, 0, 0, "N/A", "N/A");
-    GestorVendas gestorVendas = new GestorVendas("Antonio", "senhaVendas", "Gestor Vendas", 0, 0, 0, "N/A", "N/A");
-
-    //Produtos (Tipos de Sal)
-    TiposDeSal sal = new TiposDeSal("Sal", 5.0f);
-    TiposDeSal florDeSal = new TiposDeSal("Flor de Sal", 8.0f);
-
-    // Criar tanques
-    TanquesAguaSalgada tanque1 = new TanquesAguaSalgada(1, sal);
-    TanquesAguaSalgada tanque2 = new TanquesAguaSalgada(2, sal);
-    TanquesAguaSalgada tanque3 = new TanquesAguaSalgada(3, florDeSal);
-
-    // exemplo da criação de um lote pelo gestor
-    int quantidadeProdutos = 10;
-    LocalDate dataProducao = LocalDate.of(2024, 1, 1);
-    LoteFabrico loteFabrico = gestorProducao.criarLoteFabrico(tanque1, quantidadeProdutos, dataProducao);
-
 }
