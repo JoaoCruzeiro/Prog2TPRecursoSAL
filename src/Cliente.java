@@ -1,4 +1,3 @@
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +7,7 @@ class Cliente extends Utilizador {
                 super(username, password, Perfil.CLIENTE, nome, nCC, nif, telefone, morada, localidade);
                 this.encomendas = new ArrayList<>();
         }
+
 
         public Encomenda criarEncomenda() {
                 Encomenda encomenda = new Encomenda(this);
