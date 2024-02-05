@@ -2,9 +2,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestaoUtilizadores {
+public class GestaoUtilizadores implements Serializable {
     private List<Utilizador> utilizadores;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //???
     private final String caminhoFicheiro = "gestaoutilizadores.ser";
 
     public List<Utilizador> getUtilizadores() {
@@ -13,6 +13,7 @@ public class GestaoUtilizadores {
 
     public GestaoUtilizadores() {
         this.utilizadores=new ArrayList<>();
+        carregarUtilizadores();// Carregar utilizadores no construtor
     }
 
     void salvarObjetoSerializado(Object objeto) {
@@ -37,6 +38,8 @@ public class GestaoUtilizadores {
 
     public void adicionarUtilizador(Utilizador utilizador) {
         this.utilizadores.add(utilizador);
+        System.out.println("Utilizador registado com sucesso!");
+        salvarObjetoSerializado(this.utilizadores);
     }
 
     public List<Utilizador> obterUtilizadores() {

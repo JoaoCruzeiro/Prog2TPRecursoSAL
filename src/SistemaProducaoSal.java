@@ -8,24 +8,6 @@ public class SistemaProducaoSal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Cliente cliente = new Cliente("cliente1", "senhaCliente","NomeCliente", 123456, 789012345, 987654321, "Rua Cliente, 123", "Cidade");
-        GestorProducao gestorProducao = new GestorProducao("Maria", "senhaProducao", "Gestor Producao", 0, 0, 0, "N/A", "N/A");
-        GestorVendas gestorVendas = new GestorVendas("Antonio", "senhaVendas", "Gestor Vendas", 0, 0, 0, "N/A", "N/A");
-
-        //Produtos (Tipos de Sal)
-        TiposDeSal sal = new TiposDeSal("Sal", 5.0f);
-        TiposDeSal florDeSal = new TiposDeSal("Flor de Sal", 8.0f);
-
-        // Criar tanques
-        TanquesAguaSalgada tanque1 = new TanquesAguaSalgada(1, sal);
-        TanquesAguaSalgada tanque2 = new TanquesAguaSalgada(2, sal);
-        TanquesAguaSalgada tanque3 = new TanquesAguaSalgada(3, florDeSal);
-
-        // exemplo da criação de um lote pelo gestor
-        int quantidadeProdutos = 10;
-        LocalDate dataProducao = LocalDate.of(2024, 1, 1);
-        LoteFabrico loteFabrico = gestorProducao.criarLoteFabrico(tanque1, quantidadeProdutos, dataProducao);
-
         gestaoUtilizadores.carregarUtilizadores();
 
         boolean registoNovoUtilizador = false;
@@ -97,9 +79,7 @@ public class SistemaProducaoSal {
         System.out.print("Palavra-passe: ");
         String password = scanner.next();
 
-        // Lógica de autenticação - verificar nas instâncias existentes
         // Retorna o utilizador autenticado ou null se falhar
-        // Implemente a lógica adequada para o seu sistema
         utilizadorAutenticado = gestaoUtilizadores.autenticarUtilizador(username, password);
 
         return utilizadorAutenticado;
@@ -107,18 +87,35 @@ public class SistemaProducaoSal {
 
     private static void registarNovoUtilizador() {
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Novo nome de utilizador: ");
         String novoUsername = scanner.next();
         System.out.print("Nova palavra-passe: ");
         String novaPassword = scanner.next();
 
-        // Crie um novo Utilizador com perfil padrão (CLIENTE)
-        Cliente novoCliente = new Cliente(novoUsername, novaPassword, "", 0, 0, 0, "", "");
+        // Restantes dados para o registo de um cliente
+        System.out.print("Nome: ");
+        String nome = scanner.next();
+        System.out.print("Número de Cartão de Cidadão (CC): ");
+        int nCC = scanner.nextInt();
+        System.out.print("Número de Identificação Fiscal (NIF): ");
+        int nif = scanner.nextInt();
+        System.out.print("Telefone: ");
+        int telefone = scanner.nextInt();
+        System.out.print("Morada: ");
+        String morada = scanner.next();
+        System.out.print("Localidade: ");
+        String localidade = scanner.next();
 
-        // Adicione o novo cliente ao gestor de utilizadores
+        // Crie um novo Cliente com perfil padrão (CLIENTE)
+        Cliente novoCliente = new Cliente(novoUsername, novaPassword, nome, nCC, nif, telefone, morada, localidade);
+
+        // Adiciona o novo cliente no gestor de utilizadores
         gestaoUtilizadores.adicionarUtilizador(novoCliente);
-
         System.out.println("Novo utilizador registado com sucesso!");
+
+        // Esperar pela pressão de uma tecla antes de retornar ao menu de login
+        esperarTecla();
     }
 
     private static int exibirMenuCliente() {
@@ -227,5 +224,10 @@ public class SistemaProducaoSal {
             default:
                 System.out.println("Opção inválida. Tente novamente.");
         }
+    }
+
+    private static void esperarTecla() {
+        System.out.println("Pressione Enter para continuar...");
+        new java.util.Scanner(System.in).nextLine();
     }
 }
